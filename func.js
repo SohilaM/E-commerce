@@ -1,3 +1,7 @@
+import { ShippableProduct } from "./shippableProductClass.js";
+import { ExpirableProduct } from "./expirableProductClass.js";
+import { ExpirableShippableProduct } from "./expirableShippableProduct.js";
+
 export const checkout = function (customer, cart) {
   if (cart.length === 0) {
     console.log(`Cart is empty`);
@@ -9,7 +13,10 @@ export const checkout = function (customer, cart) {
 
   console.log(`** Shipment Notice **`);
   cart.cart.forEach((product) => {
-    if (typeof product.product.getWeight === "function") {
+    if (
+      product.product instanceof ExpirableShippableProduct ||
+      product.product instanceof ShippableProduct
+    ) {
       const weight = product.quantity * product.product.getWeight();
       totalPackageWeight += weight;
       console.log(
@@ -21,7 +28,10 @@ export const checkout = function (customer, cart) {
 
   console.log(`** Checkout receipt **`);
   cart.cart.forEach((product) => {
-    if (typeof product.product.getWeight === "function") {
+    if (
+      product.product instanceof ExpirableShippableProduct ||
+      product.product instanceof ShippableProduct
+    ) {
       const price = product.quantity * product.product.getPrice();
       subTotal += price;
       console.log(
