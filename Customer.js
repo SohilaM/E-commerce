@@ -4,7 +4,7 @@ import { ShippableProduct } from "./shippableProductClass.js";
 import { ExpirableProduct } from "./expirableProductClass.js";
 import { ExpirableShippableProduct } from "./expirableShippableProduct.js";
 import { Cart } from "./cart.js";
-import { checkout } from "./func.js";
+import { checkout } from "./checkoutFunction.js";
 
 export class Customer {
   cart = [];
