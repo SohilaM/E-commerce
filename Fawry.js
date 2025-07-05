@@ -1,4 +1,8 @@
 "use strict";
+import { Product } from "./Product.js";
+import { Cart } from "./cart.js";
+import { ShippableProduct } from "./shippableProduct.js";
+import { ExpirableProduct } from "./expirableProduct.js";
 
 class Customer {
   constructor(name, balance) {

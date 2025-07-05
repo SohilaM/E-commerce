@@ -1,5 +1,5 @@
 "use strict";
-import { Product } from "./Product";
+import { Product } from "./Product.js";
 
 export class ExpirableProduct extends Product {
   constructor(name, price, quantity, expiryDate) {
