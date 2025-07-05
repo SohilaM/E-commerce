@@ -1,13 +1,14 @@
 "use strict";
 import { Product } from "./Product.js";
 
-export class ShippableProduct extends Product {
-  constructor(name, price, quantity, weight) {
-    super(name, price, quantity);
-    this.weight = weight;
-  }
+export const ShippableProduct = (Base) =>
+  class extends Product {
+    constructor(name, price, quantity, weight) {
+      super(name, price, quantity);
+      this.weight = weight;
+    }
 
-  getWeight() {
-    return this.weight;
-  }
-}
+    getWeight() {
+      return this.weight;
+    }
+  };
