@@ -2,9 +2,9 @@
 import { Product } from "./Product.js";
 
 export const ShippableProduct = (Base) =>
-  class extends Product {
-    constructor(name, price, quantity, weight) {
-      super(name, price, quantity);
+  class extends Base {
+    constructor(name, price, quantity, weight, ...rest) {
+      super(name, price, quantity, ...rest);
       this.weight = weight;
     }
 

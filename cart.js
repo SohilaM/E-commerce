@@ -11,6 +11,7 @@ export class Cart {
   }
   add(product, quantity) {
     if (
+      (typeof product.isExpired !== "function" || !product.isExpired()) &&
       product.isAvailable(quantity) &&
       this.customer.getBalance() >= quantity * product.getPrice()
     ) {
@@ -18,6 +19,20 @@ export class Cart {
         product,
         quantity,
       });
+      this.customer.editBalance(quantity * product.getPrice);
+      product.editQuantity(quantity);
+    }
+    if (!product.isAvailable(quantity)) {
+      console.log(`Insufficient quantity!`);
+      return;
+    }
+    if (this.customer.getBalance() < quantity * product.getPrice()) {
+      console.log("Insufficient balance!");
+      return;
+    }
+    if (typeof product.isExpired == "function" && product.isExpired()) {
+      console.log(`${product.getName()} expired`);
+      return;
     }
   }
 }

@@ -19,4 +19,7 @@ export class Product {
   isAvailable(reqQuantity) {
     return this.quantity >= reqQuantity;
   }
+  editQuantity(reqQuantity) {
+    this.quantity -= reqQuantity;
+  }
 }
